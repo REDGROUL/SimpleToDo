@@ -13,8 +13,6 @@ namespace todo.entity
         private string _login;
         private string _password;
 
-
-        
         public User(long id, string name, string login, 
             string password)
         {

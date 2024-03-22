@@ -29,8 +29,10 @@ namespace todo
 
             foreach(TaskEntity task in tasks)
             {
-                flowLayoutPanel1.Controls.Add(new CurrentTask(task.getName()));
+                flowLayoutPanel1.Controls.Add(new CurrentTask(task.getId(), task.getName(), task.getStatus(), task.getTimeStart(), task.getTimeStop()));
             }
+
+         
            
         }
 
@@ -52,7 +54,7 @@ namespace todo
             try
             {
                 taskDao.saveTask(newTask);
-                flowLayoutPanel1.Controls.Add(new CurrentTask(newTask.getName()));
+                flowLayoutPanel1.Controls.Add(new CurrentTask(newTask.getId(), newTask.getName(), newTask.getStatus(), newTask.getTimeStart(), newTask.getTimeStop()));
             }
             catch(Exception ex)
             {
@@ -60,6 +62,8 @@ namespace todo
             }
         }
 
-
+        private void Tasks_Resize(object sender, EventArgs e)
+        {
+        }
     }
 }

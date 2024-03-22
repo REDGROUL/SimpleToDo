@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-
+using System.Windows.Forms;
 using todo.dao.abstracts;
 using todo.entity;
 
@@ -17,7 +17,27 @@ namespace todo.dao.impl
 
         public TaskEntity deleteTask(TaskEntity task)
         {
-            throw new NotImplementedException();
+            _connection.Open();
+            string sqlTask = "DELETE FROM tasks WHERE id = @id";
+            SqlCommand tasksCommand = new SqlCommand(sqlTask, _connection);
+            tasksCommand.Parameters.Add("@id", System.Data.SqlDbType.BigInt).Value = task.getId();
+
+            try
+            {
+                SqlDataReader tasksReader = tasksCommand.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally {
+                _connection.Close();
+            }
+            
+
+           
+
+            return task;
         }
 
         public List<TaskEntity> findTask(TaskEntity task)
@@ -26,8 +46,7 @@ namespace todo.dao.impl
             string sqlTask = "SELECT * FROM tasks WHERE user_id = @user_id";
             SqlCommand tasksCommand = new SqlCommand(sqlTask, _connection);
             tasksCommand.Parameters.Add("@user_id", System.Data.SqlDbType.BigInt).Value = task.getUserId();
-           
-
+            
             SqlDataReader tasksReader = tasksCommand.ExecuteReader();
 
             if (!tasksReader.HasRows)

@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.taskName = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.taskStatus = new System.Windows.Forms.Label();
+            this.Start = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.Stop = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // taskName
@@ -44,45 +45,58 @@
             this.taskName.TabIndex = 0;
             this.taskName.Text = "Название задачи";
             // 
-            // label1
+            // taskStatus
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.taskStatus.AutoSize = true;
+            this.taskStatus.Location = new System.Drawing.Point(174, 16);
+            this.taskStatus.Name = "taskStatus";
+            this.taskStatus.Size = new System.Drawing.Size(37, 13);
+            this.taskStatus.TabIndex = 1;
+            this.taskStatus.Text = "Status";
+            this.taskStatus.Click += new System.EventHandler(this.taskStatus_Click);
             // 
-            // label2
+            // Start
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "label2";
+            this.Start.AutoSize = true;
+            this.Start.Location = new System.Drawing.Point(27, 43);
+            this.Start.Name = "Start";
+            this.Start.Size = new System.Drawing.Size(35, 13);
+            this.Start.TabIndex = 2;
+            this.Start.Text = "label2";
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(139, 54);
+            this.checkBox1.Location = new System.Drawing.Point(207, 69);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.Size = new System.Drawing.Size(70, 17);
             this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.Text = "Закрыть";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // Stop
+            // 
+            this.Stop.AutoSize = true;
+            this.Stop.Location = new System.Drawing.Point(27, 70);
+            this.Stop.Name = "Stop";
+            this.Stop.Size = new System.Drawing.Size(35, 13);
+            this.Stop.TabIndex = 4;
+            this.Stop.Text = "label1";
             // 
             // CurrentTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Controls.Add(this.Stop);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Start);
+            this.Controls.Add(this.taskStatus);
             this.Controls.Add(this.taskName);
             this.Name = "CurrentTask";
-            this.Size = new System.Drawing.Size(318, 84);
+            this.Size = new System.Drawing.Size(481, 111);
+            this.AutoSizeChanged += new System.EventHandler(this.CurrentTask_AutoSizeChanged);
             this.Click += new System.EventHandler(this.CurrentTask_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -92,8 +106,9 @@
         #endregion
 
         private System.Windows.Forms.Label taskName;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label taskStatus;
+        private System.Windows.Forms.Label Start;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label Stop;
     }
 }

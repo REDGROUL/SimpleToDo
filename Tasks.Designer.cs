@@ -123,6 +123,7 @@
             this.Name = "Tasks";
             this.Text = "Tasks";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Tasks_FormClosing);
+            this.Resize += new System.EventHandler(this.Tasks_Resize);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
